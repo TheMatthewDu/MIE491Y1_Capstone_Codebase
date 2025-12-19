@@ -4,4 +4,5 @@ Authors: Matthew Du, Qi Zheng, Michael Xu, Jaxon Song
 This is the official GitHub repository for the capstone project of group OCADU-3 in 2025-26.
 
 ## Table of contents
-[Git Tutorial](tutorial/git.md)
+* [Git Setup](tutorial/git_setup.md)
+* [Git Commands](tutorial/git_commands.md)

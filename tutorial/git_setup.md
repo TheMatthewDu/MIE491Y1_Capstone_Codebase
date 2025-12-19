@@ -1,8 +1,5 @@
-# Git Tutorial
+# Git Setup
 
-
-
-## Setup
 To use git, you (obviously) need [git](https://git-scm.com/download/win) first. You can download it using the link, following the instructions.
 
 For this tutorial, it is assumed that you are using [VSCode](https://code.visualstudio.com/download) and using a Windows Operating System.
@@ -49,10 +46,7 @@ Now you'll have to add your SSH key to GitHub. Make sure you're logged in, we'll
 6. Paste your public key into the `Key` field.
 7. Click `Add SSH key`.
 
-## Basic Operations
-### Cloning
-I know this section looks super long and complicated. You only need to do these steps once per repository. 
-
+## Cloning
 First we need to do a **clone** of the repository so we have a copy on our own computers to work with. A clone simply takes the repository and makes a copy on your local computer. Any change you make to the file will not be updated in the global repository until you **push** those changes (see below on how to use `git push`).
 
 Using **Git Bash** (same as before), run the following commands
@@ -68,51 +62,12 @@ Now open VSCode. Click `Open Folder` and open the `MIE491Y1_Capstone_Codebase` f
 2. **Menu Bar**: Go to `View > Terminal`
 3. **Command Palette**: Open the Command Palette by pressing `Ctrl + Shift + P`. Type View: `Toggle Terminal` or `Terminal: New Terminal` and select the corresponding command from the list. 
 
-For this particular repository, to prevent clashes, I have disabled push permissions for you to push to the `main` branch. Therefore, all changes you make will be to your own branch, then once you are done, make a `pull request`, and I will review and merge everything. Don't worry if you do not know what any of that means; the point here is that we now need to move to your own branch where you will work.
+I have created individual branches for everyone to work on so we don't accidentally overwrite someone else's work. You can think of each branch as an isolated repository within the master repository that you work in. Once you are happy with your changes, we can "copy" the changes (called a **merge**) into the master branch, which is the "good copy" of the code.
 
-Run the following commands
+To go to your branch, run the following commands:
 ```bash
 git switch <Your First Name>
 git config --global push.default current
 ```
 
-### Git Pull
-A **git pull** is when you get update your local copy of an already cloned repository with the most up-to-date files. To do so, run the following command
-```bash
-git pull origin main
-```
-
-It is always a good practice to pull frequently (i.e., every time you start to work) so you have the most up to date files
-
-### Git Add
-A **git add** tells git which files that you want it to monitor in the repository. When you create a new file, git by default will NOT automatically add that file to the list of files it keeps track of, so you need to add it for it to be tracked.
-
-To add a file, run
-``` bash
-git add <filename>
-```
-
-### Git Commit
-Once you are done editting a file, you need to `commit` it, which is to say, update a save state of the file to git. In other words, this is effectively a "save file" step. It is also customary to leave a helpful comment to help understand what each commit does.
-
-To commit a file, run the following,
-``` bash
-git commit -m "<comment>"
-```
-This command will commit ALL of the files that have been added by ``git add``
-
-### Git Push
-Now once you are done, you want to **push** the changes to the repository so that everyone else can see it.
-``` bash
-git push
-```
-This command will add all of your commits (yes, you can have multiple commits be pushed at once). As mentioned before, this push will go to your user branch.
-
-### Pull Requests
-If you are happy with your change, we want to combine everything to the `master` branch, which will be the "good copy" of the codebase that will be used for the project. A **Pull Request** is a way of submitting a request to do something in github that others can review and leave comments on. Once everyone is happy with the pull request (often abbreviated as PR), they can approve and merge it.
-
-To create a **Pull Request**, go to the [github repository](https://github.com/TheMatthewDu/MIE491Y1_Capstone_Codebase) and go to the `Pull Requests` tab. Press the following button.
-![Pull Request Button Location](image.png)
-Fill out the form, **ensuring you select the `base:main` opton**.
-
-Submit the pull request, and then harass Matt to approve it.
+I would advise that you do NOT switch branches and always work in your own branch to prevent clashes (i.e., one person change script A which script B relies on).
