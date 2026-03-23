@@ -23,10 +23,12 @@ class Exoskeleton:
 
     def get_position(self):
         ox, oy = self.origin
-        x1 = ox + self.l1 * math.sin(math.radians(self.theta1)) + self.l2 * math.sin(math.radians(self.theta2))
-        y1 = oy + self.l1 * math.cos(math.radians(self.theta1)) + self.l2 * math.cos(math.radians(self.theta2))
+        x1 = ox + self.l1 * math.sin(math.radians(self.theta1))
+        y1 = oy + self.l1 * math.cos(math.radians(self.theta1))
 
-        return x1, y1
+        x2 = self.l2 * math.sin(math.radians(self.theta2))
+        y2 = self.l2 * math.cos(math.radians(self.theta2))
+        return x1 + x2, y1 + y2
 
     def draw(self, screen):
         ox, oy = self.origin
@@ -50,7 +52,7 @@ class Obstacle:
         self.y = self.origin[1] + y
         self.radius = r
 
-    def contains(self, pt: (float, float)) -> bool:
+    def contains(self, pt: tuple[float, float]) -> bool:
         return (pt[0] - self.x) ** 2 + (pt[1] - self.y) ** 2 <= self.radius ** 2
 
     def draw(self, screen):
